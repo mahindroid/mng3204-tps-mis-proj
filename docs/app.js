@@ -24,8 +24,8 @@
   function todayKey(){return new Date().toISOString().slice(0,10);}
   function xlsxMode(){return MODE==="xlsx";}
   function backendMode(){return MODE==="backend";}
-  function req(url,options){return fetch(url,Object.assign({headers:{"Content-Type":"application/json"}},options||{})).then(function(r){if(!r.ok)throw new Error("Request failed: "+r.status);return r.json();}).then(function(p){if(p&&p.ok===false)throw new Error(p.error||"Backend request failed.");return p;});}
-  function post(action,payload){return req(URL,{method:"POST",body:JSON.stringify({action:action,payload:payload||{}})});}
+  function req(url,options){return fetch(url,options||{}).then(function(r){if(!r.ok)throw new Error("Request failed: "+r.status);return r.json();}).then(function(p){if(p&&p.ok===false)throw new Error(p.error||"Backend request failed.");return p;});}
+  function post(action,payload){return req(URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:action,payload:payload||{}})});}
   function setDirty(){state.dirty=true;}
   function setSetting(k,v){var row=db.settings.filter(function(x){return x.settingKey===k;})[0];if(row)row.settingValue=String(v);else db.settings.push({settingKey:k,settingValue:String(v),description:""});}
   function getSetting(k,f){var row=db.settings.filter(function(x){return x.settingKey===k;})[0];return row?row.settingValue:f;}
