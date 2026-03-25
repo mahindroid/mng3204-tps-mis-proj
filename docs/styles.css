@@ -67,7 +67,7 @@ code {
 }
 
 .auth-card {
-  width: min(460px, 100%);
+  width: min(380px, 100%);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(217, 224, 234, 0.9);
@@ -344,13 +344,14 @@ textarea {
 }
 
 .button.ghost {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(197, 40, 40, 0.2);
   color: white;
   margin-top: 6px;
   width: 100%;
   padding: 8px 12px;
   font-size: 0.88rem;
   line-height: 1.2;
+  border: 1px solid rgba(197, 40, 40, 0.6);
 }
 
 .button:disabled {
